@@ -89,3 +89,81 @@ body {
         padding: 10px 15px;
     }
 }
+
+/* Stili per la card del prodotto */
+.product-card {
+    /* Layout e dimensioni */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 15px;
+
+    /* Aspetto e stile */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    /* Angoli leggermente arrotondati */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Ombra per profondità */
+    text-align: center;
+    font-family: Arial, sans-serif;
+    transition: transform 0.3s ease;
+    /* Animazione al passaggio del mouse */
+}
+
+/* Effetto al passaggio del mouse */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Stile per l'immagine del prodotto */
+.product-image {
+    max-width: 100%;
+    /* L'immagine non supererà la larghezza del contenitore */
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+/* Stile per il titolo del prodotto */
+.product-name {
+    font-size: 1.25em;
+    /* Dimensioni del titolo */
+    font-weight: 700;
+    color: #0f1111;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+/* Stile per la descrizione del prodotto */
+.product-description {
+    font-size: 0.9em;
+    color: #555;
+    margin: 5px 0 10px;
+    line-height: 1.4;
+    /* Tronca il testo se troppo lungo */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Stile per il prezzo */
+.product-price {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #b12704;
+    /* Colore rosso, tipico per i prezzi */
+    margin-top: 10px;
+}
+
+/* Responsività */
+@media (max-width: 600px) {
+    .product-card {
+        margin: 10px auto;
+    }
+}

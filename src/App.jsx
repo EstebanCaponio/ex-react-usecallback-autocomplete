@@ -13,6 +13,7 @@ import { useCallback, useEffect, useState } from "react";
 function App() {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
+  const [selected, setSelected] = useState(null);
 
   const fetchProducts = async (query) => {
     if (!query.trim()) {
@@ -37,6 +38,14 @@ function App() {
     debouncedFetchProducts(query);
   }, [query]);
 
+  const fetchProdDetails = async (id) => {
+    const res = await fetch(`http://localhost:3333/products/${id}`)
+    const data = await res.json();
+    setSelected(data);
+    setQuery('');
+    setSuggestions([]);
+  }
+
   return (
     <div className="search-container">
       <input
@@ -50,8 +59,19 @@ function App() {
       {suggestions.length > 0 && (
         <div className="suggestions-dropdown">
           {suggestions.map((product) => (
-            <p key={product.id}>{product.name}</p>
+            <p
+              key={product.id}
+              onClick={() => fetchProdDetails(product.id)}
+            >{product.name}</p>
           ))}
+        </div>
+      )}
+      {selected && (
+        <div className="product-card">
+          <img src={selected.image} alt={selected.name} className="product-image" />
+          <h2 className="product-name">{selected.name}</h2>
+          <p className="product-description">{selected.description}</p>
+          <p className="product-price">prezzo: {selected.price}€</p>
         </div>
       )}
     </div>
